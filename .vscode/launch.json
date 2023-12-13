@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "name": "C#: VueApp.Server [https]",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}\\VueApp\\VueApp.Server\\VueApp.Server.csproj",
+            "launchConfigurationId": "TargetFramework=;https"
+        }
+    ]
+}
