@@ -1,47 +1,37 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="bg-light">
+    <button v-on:click="openModal">Click</button>
+    <open-modal v-show="showContent" v-on:from-child="closeModal">
+      slotからモーダルウィンドウへ
+    </open-modal>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script>
+import OpenModal from './components/OpenModal.vue';
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+export default {
+  components: {
+    'open-modal': OpenModal,
+  },
+  data() {
+    return {
+      showContent: false,
+    };
+  },
+  methods: {
+    openModal() {
+      this.showContent = true;
+    },
+    closeModal() {
+      this.showContent = false;
+    },
+  },
+};
+</script>
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+<style>
+.bg-light {
+  background-color: rgb(255, 255, 255);
 }
 </style>
